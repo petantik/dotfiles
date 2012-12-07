@@ -39,8 +39,10 @@ filetype plugin on
 filetype indent on
 syntax on
 
-set ttymouse=xterm2
 set nocompatible
+set ttymouse=xterm2
+set mouse=a
+set hidden
 set colorcolumn=79
 set cpoptions+=$
 set tabstop=4
@@ -54,6 +56,9 @@ set ruler
 set hlsearch
 set modeline
 set ls=2
+" Swap files
+set backupdir=~/.vim-swp/
+set directory=~/.vim-swp/
 " set statusline=%{fugitive#statusline()}
 let g:neocomplcache_enable_at_startup = 1
 " set spell spelllang=en_gb
