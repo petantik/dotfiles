@@ -10,24 +10,25 @@ Bundle 'fholgado/minibufexpl.vim'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'xolox/vim-lua-ftplugin'
 Bundle 'c.vim'
-Bundle 'mlint.vim--Ibbotson'
+Bundle 'ibbo/mlint.vim'
 Bundle 'klen/python-mode'
 Bundle 'majutsushi/tagbar'
 Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-surround'
+"Bundle 'tpope/vim-surround'
 Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/nerdcommenter'
+"Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/syntastic'
 Bundle 'lukerandall/haskellmode-vim'
 Bundle 'eagletmt/ghcmod-vim'
 Bundle 'ujihisa/neco-ghc'
 Bundle 'xoria256.vim'
-Bundle 'MatlabFilesEdition'
-Bundle 'L9'
+"Bundle 'MatlabFilesEdition'
+"Bundle 'L9'
 "Bundle 'FuzzyFinder'
 Bundle 'kien/ctrlp.vim'
-Bundle 'Shougo/neocomplcache'
-Bundle 'Shougo/neosnippet'
+"Bundle 'Shougo/neocomplcache'
+Bundle 'Valloric/YouCompleteMe'
+"Bundle 'Shougo/neosnippet'
 Bundle 'Shougo/vimproc'
 Bundle 'git://vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex'
 
@@ -57,6 +58,7 @@ set hlsearch
 set modeline
 set ls=2
 " Swap files
+set noswapfile
 set backupdir=~/.vim-swp/
 set directory=~/.vim-swp/
 " set statusline=%{fugitive#statusline()}
