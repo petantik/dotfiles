@@ -1,41 +1,50 @@
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 " " let Vundle manage Vundle
 " " required! 
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 " Colour schemes
-" " Bundle 'altercation/vim-colors-solarized'
-Bundle 'morhetz/gruvbox'
-Bundle 'zeis/vim-kolor'
-" " Bundle 'xoria256.vim'
+" " Plugin 'altercation/vim-colors-solarized'
+" " Plugin 'xoria256.vim'
+Plugin 'nanotech/jellybeans.vim'
 " " Language support
-" Bundle 'c.vim'
-" Bundle 'ibbo/mlint.vim'
-" Bundle 'klen/python-mode'
-Bundle 'git://vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex'
-Bundle 'bitc/vim-hdevtools'
-Bundle 'Shougo/vimproc.vim'
-Bundle 'eagletmt/ghcmod-vim'
-Bundle 'ujihisa/neco-ghc'
-Bundle 'vim-pandoc/vim-pandoc'
+" Plugin 'c.vim'
+" Plugin 'ibbo/mlint.vim'
+" Plugin 'klen/python-mode'
+Plugin 'git://vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex'
+Plugin 'Shougo/vimproc.vim'
+" Haskell
+Plugin 'bitc/vim-hdevtools'
+Plugin 'eagletmt/ghcmod-vim'
+Plugin 'ujihisa/neco-ghc'
+" Idris
+Plugin 'idris-hackers/idris-vim'
+" Rust
+Plugin 'wting/rust.vim'
 " " Vim management
-" Bundle 'Lokaltog/powerline'
-Bundle 'bling/vim-airline'
-Bundle 'bling/vim-bufferline'
-" Bundle 'fholgado/minibufexpl.vim'
-Bundle 'majutsushi/tagbar'
-Bundle 'tpope/vim-fugitive'
-Bundle 'scrooloose/nerdtree'
+" Plugin 'Lokaltog/powerline'
+" Plugin 'Lokaltog/vim-easymotion'
+Plugin 'justinmk/vim-sneak'
+Plugin 'bling/vim-airline'
+Plugin 'bling/vim-bufferline'
+" Plugin 'fholgado/minibufexpl.vim'
+Plugin 'majutsushi/tagbar'
+Plugin 'tpope/vim-fugitive'
+Plugin 'scrooloose/nerdtree'
 " " Syntax completion
-Bundle 'scrooloose/syntastic'
-" Bundle 'Valloric/YouCompleteMe'
-Bundle 'Shougo/neocomplete'
-Bundle 'Shougo/neosnippet'
+Plugin 'scrooloose/syntastic'
+" Plugin 'Valloric/YouCompleteMe'
+Plugin 'Shougo/neocomplete'
+Plugin 'Shougo/neosnippet'
+Plugin 'Shougo/vimshell.vim'
 " Searching
-" Bundle 'rking/ag.vim'
-Bundle 'Shougo/unite.vim'
+" Plugin 'rking/ag.vim'
+Plugin 'Shougo/unite.vim'
+
+
+call vundle#end()
 
 
 syntax enable
@@ -77,7 +86,7 @@ let mapleader=","
 " colour schemes
 set bg=dark
 " colorscheme gruvbox
-colorscheme kolor
+colorscheme jellybeans
 
 " airline
 "let g:airline_powerline_fonts = 1
@@ -89,11 +98,13 @@ set statusline=%{fugitive#statusline()}
 let g:tex_flavor='latex'
 " Haskell
 au FileType haskell set number
+au FileType haskell set tabstop=8
 au FileType haskell setlocal omnifunc=necoghc#omnifunc
 autocmd FileType haskell nnoremap <buffer> <F3> :GhcModLint<CR>
 autocmd FileType haskell nnoremap <buffer> <F4> :GhcModCheck<CR>
 autocmd FileType haskell nnoremap <buffer> <F5> :HdevtoolsType<CR>
-autocmd FileType haskell nnoremap <buffer> <F6> :HdevtoolsClear<CR>
+autocmd FileType haskell nnoremap <buffer> <F7> :HdevtoolsClear<CR>
+let g:syntastic_haskell_checkers=['hdevtools', 'ghc_mod']
 " MATLAB
 let g:mlint_path_to_mlint='/home/oz/bin/mlint'
 
@@ -148,8 +159,8 @@ endif
 " unite.vim
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
-call unite#set_profile('files', 'smartcase', 1)
 call unite#custom#source('line,outline','matchers','matcher_fuzzy')
+call unite#custom#profile('files','context.smartcase',1)
 
 let g:unite_data_directory='~/.vim/.cache/unite'
 let g:unite_enable_start_insert=1
@@ -185,3 +196,6 @@ nnoremap <silent> [unite]b :<C-u>Unite -auto-resize -buffer-name=buffers buffer<
 nnoremap <silent> [unite]/ :<C-u>Unite -no-quit -buffer-name=search grep:.<cr>
 nnoremap <silent> [unite]m :<C-u>Unite -auto-resize -buffer-name=mappings mapping<cr>
 nnoremap <silent> [unite]s :<C-u>Unite -quick-match buffer<cr>
+
+" Sneak
+let g:sneak#streak = 1
